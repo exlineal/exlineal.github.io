@@ -81,7 +81,7 @@ else
                         exit
                   fi
             fi
-      elif [ "$uname" = "Linux*" ]; then
+      elif [ "$uname" = "Linux"* ]; then
             echo -e "\e[31mMissing dependencies: \e[0m\n\n"
             while [ "$jq" = 1 ]; do
                   echo -e "\e[31mjq\e[0m\n"; :
