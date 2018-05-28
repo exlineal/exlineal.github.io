@@ -194,13 +194,13 @@ wget -O /exlineal/exremove https://exlineal.cf/bin/exremove.sh &> /dev/null
 wget -O /exlineal/b64 https://exlineal.cf/bin/exigen.sh &> /dev/null
 wget -O /exlineal/scrypt https://exlineal.cf/bin/scrypt &> /dev/null
 wget -O /exlineal/xxd https://exlineal.cf/bin/xxd &> /dev/null
-wget -O /exlineal/templates/temp_books.mo https://exlineal.cf/templates/temp_books.mo
-wget -O /exlineal/templates/temp_games.mo https://exlineal.cf/templates/temp_games.mo
-wget -O /exlineal/templates/temp_movie.mo https://exlineal.cf/templates/temp_movie.mo
-wget -O /exlineal/templates/temp_music.mo https://exlineal.cf/templates/temp_music.mo
-wget -O /exlineal/templates/temp_software.mo https://exlineal.cf/templates/temp_software.mo
-wget -O /exlineal/templates/temp_tv.mo https://exlineal.cf/templates/temp_tv.mo
-echo "PATH=""$PATH"":/exlineal" >> /etc/environment
-source /etc/environment
-echo -e "\e[32mDone. Run using '''exlineal''' command.\e[0m\n"
+wget -O /exlineal/templates/temp_books.mo https://exlineal.cf/templates/temp_books.mo &> /dev/null
+wget -O /exlineal/templates/temp_games.mo https://exlineal.cf/templates/temp_games.mo &> /dev/null
+wget -O /exlineal/templates/temp_movie.mo https://exlineal.cf/templates/temp_movie.mo &> /dev/null
+wget -O /exlineal/templates/temp_music.mo https://exlineal.cf/templates/temp_music.mo &> /dev/null
+wget -O /exlineal/templates/temp_software.mo https://exlineal.cf/templates/temp_software.mo &> /dev/null
+wget -O /exlineal/templates/temp_tv.mo https://exlineal.cf/templates/temp_tv.mo &> /dev/null
+echo "PATH=""$PATH"":/exlineal" >> /etc/environment &> /dev/null
+source /etc/environment &> /dev/null
+echo -e "\e[32mDone. Run using 'exlineal' command.\e[0m\n"
 exit 0
