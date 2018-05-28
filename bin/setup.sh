@@ -191,7 +191,7 @@ mkdir /exlineal/templates
 wget -O /exlineal/exlineal https://exlineal.cf/bin/exlineal.sh &> /dev/null
 wget -O /exlineal/exigen https://exlineal.cf/bin/exigen.sh &> /dev/null
 wget -O /exlineal/exremove https://exlineal.cf/bin/exremove.sh &> /dev/null
-wget -O /exlineal/b64 https://exlineal.cf/bin/exigen.sh &> /dev/null
+wget -O /exlineal/b64 https://exlineal.cf/bin/b64 &> /dev/null
 wget -O /exlineal/scrypt https://exlineal.cf/bin/scrypt &> /dev/null
 wget -O /exlineal/xxd https://exlineal.cf/bin/xxd &> /dev/null
 wget -O /exlineal/templates/temp_books.mo https://exlineal.cf/templates/temp_books.mo &> /dev/null
@@ -200,6 +200,13 @@ wget -O /exlineal/templates/temp_movie.mo https://exlineal.cf/templates/temp_mov
 wget -O /exlineal/templates/temp_music.mo https://exlineal.cf/templates/temp_music.mo &> /dev/null
 wget -O /exlineal/templates/temp_software.mo https://exlineal.cf/templates/temp_software.mo &> /dev/null
 wget -O /exlineal/templates/temp_tv.mo https://exlineal.cf/templates/temp_tv.mo &> /dev/null
+chmod +x /exlineal/exlineal /exlineal/exigen /exlineal/exremove /exlineal/b64 /exlineal/scrypt /exlineal/xxd
+ln /exlineal/exlineal /usr/bin/exlineal
+ln /exlineal/exigen /usr/bin/exigen
+ln /exlineal/exremove /usr/bin/exremove
+ln /exlineal/b64 /usr/bin/b64
+ln /exlineal/scrypt /usr/bin/scrypt
+ln /exlineal/xxd /usr/bin/xxd
 echo "PATH=""$PATH"":/exlineal" >> /etc/environment &> /dev/null
 source /etc/environment &> /dev/null
 echo -e "\e[32mDone. Run using 'exlineal' command.\e[0m\n"
