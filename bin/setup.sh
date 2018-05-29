@@ -188,6 +188,13 @@ rm -rf /exlineal &> /dev/null
 rm -f 1 &> /dev/null
 mkdir /exlineal
 mkdir /exlineal/templates
+mkdir /exlineal/outfiles
+mkdir /exlineal/outfiles/software
+mkdir /exlineal/outfiles/movies
+mkdir /exlineal/outfiles/tv
+mkdir /exlineal/outfiles/games
+mkdir /exlineal/outfiles/music
+mkdir /exlineal/outfiles/books
 wget -O /exlineal/exlineal https://exlineal.cf/bin/exlineal.sh &> /dev/null
 wget -O /exlineal/exigen https://exlineal.cf/bin/exigen.sh &> /dev/null
 wget -O /exlineal/exremove https://exlineal.cf/bin/exremove.sh &> /dev/null

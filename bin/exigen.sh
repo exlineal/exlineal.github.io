@@ -139,18 +139,6 @@ done
 echo -e "\e[39m\n${table[$mediatype]}\n"
 if [ "$mediatype" = 1 ]
 then
-
-
-
-
-
-
-
-
-
-
-
-
 			echo -e "\n\e[93mEnter title\n?:\e[33m"
 			read title
 			echo -e "\n\e[93mEnter season number\n?:\e[33m"
@@ -223,28 +211,7 @@ then
 		export dlink="$ixio"
 		export dlink2="$sprunge"
 		export sparelink="$nixenc"
-
-		mkdir outfiles &> /dev/null
-		mkdir outfiles/software &> /dev/null
-		mkdir outfiles/movies &> /dev/null
-		mkdir outfiles/tv &> /dev/null
-		mkdir outfiles/games &> /dev/null
-		mkdir outfiles/music &> /dev/null
-		mkdir outfiles/books &> /dev/null
-
-		mo /cyberarms/tv.mo > outfiles/tv/"$pagename".html	
-		subf="tv"	
-
-
-
-
-
-
-
-
-
-
-
+		mo /exlineal/temp_tv.mo > /exlineal/outfiles/tv/"$pagename".html	
 elif [ "$mediatype" = 2 ]
 then
 
