@@ -75,7 +75,6 @@ else
                         done
                         while [ "$tar" = 0 ]; do
                               brew instal tar < /dev/null; :
-                        done
                         while [ "$mo" = 0 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo; :
                               chmod +x mo

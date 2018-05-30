@@ -1,0 +1,12 @@
+Begin3
+Title:          Exlineal
+Version:        0.1
+Description:    A program written to automate adding stuff to the https://exlineal.cf
+		website.
+Keywords:       Exlineal
+Author:         Wren (wren@airmail.cc)
+Maintained-by:  Wren (wren@airmail.cc)
+Original-site:  https://exlineal.cf/
+Platform:       Linux, Unix, OsX
+Copying-policy: See LICENSE
+End

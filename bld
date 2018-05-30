@@ -24,11 +24,11 @@ curl=$(program_is_installed curl)
 zip=$(program_is_installed 7z)
 git=$(program_is_installed git)
 mo=$(program_is_installed mo)
-tar=$(program_is_installed tar)
+expect=$(program_is_installed expect)
 uname=$(uname -a)
 apt=$(program_is_installed apt)
 brew=$(program_is_installed brew)
-if [ "$jq" = 1 ] && [ "$curl" = 1 ] && [ "$zip" = 1 ] && [ "$git" = 1 ] && [ "$tar" = 1 ] && [ "$mo" = 1 ]; then
+if [ "$jq" = 1 ] && [ "$curl" = 1 ] && [ "$zip" = 1 ] && [ "$git" = 1 ] && [ "$mo" = 1 ]; then
     echo -e "\e[32mDependencies installed\e[0m\n"; :
 else
       if [ "$uname" = "Darwin*" ]; then
@@ -45,9 +45,6 @@ else
                   done
                   while [ "$git" = 0 ]; do
                         echo -e "\e[31mgit\e[0m\n\n"; :
-                  done
-                  while [ "$tar" = 0 ]; do
-                        echo -e "\e[31mtar\e[0m\n\n"; :
                   done
                   while [ "$mo" = 0 ]; do
                         echo -e "\e[31mmo\e[0m\n\n"; :
@@ -71,10 +68,7 @@ else
                               brew install curl < /dev/null; :
                         done
                         while [ "$git" = 0 ]; do
-                              brew install git < /dev/null; :
-                        done
-                        while [ "$tar" = 0 ]; do
-                              brew instal tar < /dev/null; :
+                              brew install git < /dev/null
                         done
                         while [ "$mo" = 0 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo; :
@@ -89,23 +83,23 @@ else
             fi
       elif [ "$uname" = *"Linux"* ]; then
             echo -e "\e[31mMissing dependencies: \e[0m\n\n"
-            while [ "$jq" = 0 ]; do
+            while [ "$jq" = 1 ]; do
                   echo -e "\e[31mjq\e[0m\n"; :
             done
-            while [ "$curl" = 0 ]; do
+            while [ "$curl" = 1 ]; do
                   echo -e "\e[31mcurl\e[0m\n"; :
             done
-            while [ "$zip" = 0 ]; do
+            while [ "$zip" = 1 ]; do
                   echo -e "\e[31m7-zip\e[0m\n"; :
             done
-            while [ "$git" = 0 ]; do
+            while [ "$git" = 1 ]; do
                   echo -e "\e[31mgit\e[0m\n"; :
             done
-            while [ "$mo" = 0 ]; do
+            while [ "$mo" = 1 ]; do
                   echo -e "\e[31mmo\e[0m\n"; :
             done
-            while [ "$tar" = 0 ]; do
-                  echo -e "\e[31mtar\e[0m\n"; :
+            while [ "$expect" = 1 ]; do
+                  echo -e "\e[31mexpect\e[0m\n"; :
             done
             echo -e "\e[36mTry to auto-install missing? (y/n)\n?:"
             read fixmissing
@@ -127,44 +121,38 @@ else
                         wait
                         sudo apt-get -y upgrade
                         wait
-                        while [ "$jq" = 0 ]; do
+                        while [ "$jq" = 1 ]; do
                               sudo apt-get install -y jq; :
                         done
-                        while [ "$zip" = 0 ]; do
+                        while [ "$zip" = 1 ]; do
                               sudo apt-get install -y p7zip p7zip-full; :
                         done
-                        while [ "$curl" = 0 ]; do
+                        while [ "$curl" = 1 ]; do
                               sudo apt-get install -y curl; :
                         done
-                        while [ "$git" = 0 ]; do
+                        while [ "$git" = 1 ]; do
                               sudo apt-get install -y git; :
                         done
-                        while [ "$mo" = 0 ]; do
+                        while [ "$mo" = 1 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo
                               chmod +x mo
                               mv mo /usr/bin/mo
                               :
                         done
-                        while [ "$tar" = 0 ]; do
-                              sudo apt-get install -y tar; :
-                        done
                         echo -e "\e[0m"
                   else
                         echo -e "\e[37m"
-                        while [ "$jq" = 0 ]; do
+                        while [ "$jq" = 1 ]; do
                               brew install jq; :
                         done
-                        while [ "$zip" = 0 ]; do
+                        while [ "$zip" = 1 ]; do
                               brew install p7zip; :
                         done
-                        while [ "$curl" = 0 ]; do
+                        while [ "$curl" = 1 ]; do
                               brew install curl; :
                         done
-                        while [ "$git" = 0 ]; do
+                        while [ "$git" = 1 ]; do
                               brew install git; :
-                        done
-                        while [ "$tar" = 0 ]; do
-                              brew install tar; :
                         done
                         while [ "$mo" = 0 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo
@@ -198,23 +186,21 @@ source /etc/environment
 echo -e "\e[97mInstalling Exlineal, please wait...\e[0m\n"
 rm -rf /exlineal &> /dev/null
 rm -f 1 &> /dev/null
-mkdir /exlineal /exlineal/templates /exlineal/outfiles /exlineal/outfiles/software /exlineal/outfiles/movies /exlineal/outfiles/tv /exlineal/outfiles/games /exlineal/outfiles/music /exlineal/outfiles/books &> /dev/null
-cp temp_* /exlineal/templates/ &> /dev/null
-cp exlineal.sh /exlineal/exlineal &> /dev/null
-cp exigen.sh /exlineal/exigen &> /dev/null
-cp exremove.sh /exlineal/exremove &> /dev/null
-cp b64 /exlineal &> /dev/null
-cp scrypt /exlineal &> /dev/null
-cp xxd /exlineal &> /dev/null
-chmod +x /exlineal/exlineal /exlineal/exigen /exlineal/exremove /exlineal/b64 /exlineal/scrypt /exlineal/xxd &> /dev/null
-ln /exlineal/exlineal /usr/bin/exlineal &> /dev/null
-ln /exlineal/exigen /usr/bin/exigen &> /dev/null
-ln /exlineal/exremove /usr/bin/exremove &> /dev/null
-ln /exlineal/b64 /usr/bin/b64 &> /dev/null
-ln /exlineal/scrypt /usr/bin/scrypt &> /dev/null
-ln /exlineal/xxd /usr/bin/xxd &> /dev/null
+mkdir /exlineal
+mkdir /exlineal/templates
+wget -O /exlineal/exlineal https://exlineal.cf/bin/exlineal.sh &> /dev/null
+wget -O /exlineal/exigen https://exlineal.cf/bin/exigen.sh &> /dev/null
+wget -O /exlineal/exremove https://exlineal.cf/bin/exremove.sh &> /dev/null
+wget -O /exlineal/b64 https://exlineal.cf/bin/exigen.sh &> /dev/null
+wget -O /exlineal/scrypt https://exlineal.cf/bin/scrypt &> /dev/null
+wget -O /exlineal/xxd https://exlineal.cf/bin/xxd &> /dev/null
+wget -O /exlineal/templates/temp_books.mo https://exlineal.cf/templates/temp_books.mo &> /dev/null
+wget -O /exlineal/templates/temp_games.mo https://exlineal.cf/templates/temp_games.mo &> /dev/null
+wget -O /exlineal/templates/temp_movie.mo https://exlineal.cf/templates/temp_movie.mo &> /dev/null
+wget -O /exlineal/templates/temp_music.mo https://exlineal.cf/templates/temp_music.mo &> /dev/null
+wget -O /exlineal/templates/temp_software.mo https://exlineal.cf/templates/temp_software.mo &> /dev/null
+wget -O /exlineal/templates/temp_tv.mo https://exlineal.cf/templates/temp_tv.mo &> /dev/null
 echo "PATH=""$PATH"":/exlineal" >> /etc/environment &> /dev/null
 source /etc/environment &> /dev/null
-rm -rf ./exlineal
 echo -e "\e[32mDone. Run using 'exlineal' command.\e[0m\n"
 exit 0
