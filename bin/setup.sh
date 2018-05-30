@@ -126,7 +126,7 @@ else
                   echo -e "\e[36m\nMethod to use?"
                   if [ "$apt" = 1 ]; then
                         echo -e "$icou""\e[36m\n\t. Apt (Debian-based)\n"
-                        icou = "$icou" + 1
+                        ((icou++))
                   elif [[ "$brew" ]]; then
                         echo -e "$icou""\e[36m\n\t. Linuxbrew (non-Debian-based)\n"
                   else
