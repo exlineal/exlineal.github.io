@@ -55,11 +55,16 @@ else
                   done
                   echo -e "\e[36mTry to auto-install missing? (y/n)\n?:"
                   read fixmissing
+
                   while [[ ( $fixmissing != "y" && $fixmissing != "n" ) ]]; do
                         echo -e "?:"
                         read fixmissing
                   done
                   echo -e "\e[0m"
+                  if [ "$brew" = 0 ]; then
+                        echo -e "\e[36m\n\tNo install methods available. Install brew and try again.\nAlternatively, install dependencies manually.\nPlease contact exlineal@protonmail.cf with your package manager so it can get support."
+                        exit 0
+                  fi
                   if [ "$fixmissing" = "y" ]; then
                         echo -e "\e[37m"
                         while [ "$jq" = 0 ]; do
@@ -117,7 +122,18 @@ else
             done
             echo -e "\e[0m"
             if [ "$fixmissing" = "y" ]; then
-                  echo -e "\e[36m\nMethod to use?\n\t1. Apt (Debian-based)\n\t2. Linuxbrew (non-Debian-based) (1 or 2)\n?:"
+                  i = 0
+                  echo -e "\e[36m\nMethod to use?"
+                  if [ "$apt" = 1 ]; then
+                        echo -e "$i""\e[36m\n\t. Apt (Debian-based)\n"
+                        i = "$i" + 1
+                  elif [[ "$brew" ]]; then
+                        echo -e "$i""\e[36m\n\t. Linuxbrew (non-Debian-based)\n"
+                  else
+                        echo -e "\e[36m\n\tNo install methods available. Install apt or linuxbrew, and try again.\nAlternatively, install dependencies manually.\nPlease contact exlineal@protonmail.cf with your package manager so it can get support."
+                        exit 0
+                  fi
+                  "\n\n(1 or 2)\n?:"
                   read aptorbrew
                   while [[ ( "$aptorbrew" != 1 && "$aptorbrew" != 2 ) ]]; do
                         echo -e "Invalid.\n\nMethod to use?\n\t1. Apt (Debian-based)\n\t2. Linuxbrew (non-Debian-based) (1 or 2)\n?:"
