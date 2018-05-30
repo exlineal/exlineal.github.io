@@ -122,13 +122,13 @@ else
             done
             echo -e "\e[0m"
             if [ "$fixmissing" = "y" ]; then
-                  i = 0
+                  icou = 0
                   echo -e "\e[36m\nMethod to use?"
                   if [ "$apt" = 1 ]; then
-                        echo -e "$i""\e[36m\n\t. Apt (Debian-based)\n"
-                        i = "$i" + 1
+                        echo -e "$icou""\e[36m\n\t. Apt (Debian-based)\n"
+                        icou = "$icou" + 1
                   elif [[ "$brew" ]]; then
-                        echo -e "$i""\e[36m\n\t. Linuxbrew (non-Debian-based)\n"
+                        echo -e "$icou""\e[36m\n\t. Linuxbrew (non-Debian-based)\n"
                   else
                         echo -e "\e[36m\n\tNo install methods available. Install apt or linuxbrew, and try again.\nAlternatively, install dependencies manually.\nPlease contact exlineal@protonmail.cf with your package manager so it can get support."
                         exit 0
