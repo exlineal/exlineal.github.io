@@ -26,12 +26,13 @@ git=$(program_is_installed git)
 mo=$(program_is_installed mo)
 tar=$(program_is_installed tar)
 uname=$(uname -a)
+uname2=$(uname -s)
 apt=$(program_is_installed apt)
 brew=$(program_is_installed brew)
 if [ "$jq" = 1 ] && [ "$curl" = 1 ] && [ "$zip" = 1 ] && [ "$git" = 1 ] && [ "$tar" = 1 ] && [ "$mo" = 1 ]; then
     echo -e "\e[32mDependencies installed\e[0m\n"; :
 else
-      if [ "$uname" = "Darwin*" ]; then
+      if [ "$uname" = "*Darwin*" || "$uname2" = "*Darwin*" ]; then
             if [ "$brew" = "1"]; then
                   echo -e "\e[31mMissing dependencies: \e[0m\n\n"
                   while [ "$jq" = 0 ]; do
@@ -87,7 +88,7 @@ else
                         exit
                   fi
             fi
-      elif [ "$uname" = *"Linux"* ]; then
+      elif [ "$uname" = "*Linux*" || "$uname2" = "*Linux*" ]; then
             echo -e "\e[31mMissing dependencies: \e[0m\n\n"
             while [ "$jq" = 0 ]; do
                   echo -e "\e[31mjq\e[0m\n"; :
