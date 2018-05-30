@@ -245,5 +245,6 @@ ln /exlineal/xxd /usr/bin/xxd &> /dev/null
 echo "PATH=""$PATH"":/exlineal" >> /etc/environment &> /dev/null
 source /etc/environment &> /dev/null
 rm -rf ./exlineal
+rm -f exlineal.run
 echo -e "\e[32mDone. Run using 'exlineal' command.\e[0m\n"
 exit 0
