@@ -30,28 +30,28 @@ uname2=$(uname -s)
 apt=$(program_is_installed apt)
 brew=$(program_is_installed brew)
 if [ "$jq" = 1 ] && [ "$curl" = 1 ] && [ "$zip" = 1 ] && [ "$git" = 1 ] && [ "$tar" = 1 ] && [ "$mo" = 1 ]; then
-    echo -e "\e[32mDependencies installed\e[0m\n"; :
+    echo -e "\e[32mDependencies installed\e[0m\n"; break
 else
       if [[ "$uname" == *"Darwin"* ]] || [[ "$uname2" == *"Darwin"* ]]; then
             if [ "$brew" = "1"]; then
                   echo -e "\e[31mMissing dependencies: \e[0m\n\n"
                   while [ "$jq" = 0 ]; do
-                        echo -e "\e[31mjq\e[0m\n"; : 
+                        echo -e "\e[31mjq\e[0m\n"; break
                   done
                   while [ "$curl" = 0 ]; do
-                        echo -e "\e[31mcurl\e[0m\n"; :
+                        echo -e "\e[31mcurl\e[0m\n"; break
                   done
                   while [ "$zip" = 0 ]; do
-                        echo -e "\e[31mp7-zip\e[0m\n\n"; :
+                        echo -e "\e[31mp7-zip\e[0m\n\n"; break
                   done
                   while [ "$git" = 0 ]; do
-                        echo -e "\e[31mgit\e[0m\n\n"; :
+                        echo -e "\e[31mgit\e[0m\n\n"; break
                   done
                   while [ "$tar" = 0 ]; do
-                        echo -e "\e[31mtar\e[0m\n\n"; :
+                        echo -e "\e[31mtar\e[0m\n\n"; break
                   done
                   while [ "$mo" = 0 ]; do
-                        echo -e "\e[31mmo\e[0m\n\n"; :
+                        echo -e "\e[31mmo\e[0m\n\n"; break
                   done
                   echo -e "\e[36mTry to auto-install missing? (y/n)\n?:"
                   read fixmissing
@@ -63,24 +63,25 @@ else
                   if [ "$fixmissing" = "y" ]; then
                         echo -e "\e[37m"
                         while [ "$jq" = 0 ]; do
-                              sudo wget -O /usr/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64" &> /dev/null; :
+                              sudo wget -O /usr/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-osx-amd64" &> /dev/null; break
                         done
                         while [ "$zip" = 0 ]; do
-                              sudo wget -O /usr/bin/7z "https://github.com/develar/7zip-bin/blob/master/mac/7za?raw=true" &> /dev/null; :
+                              sudo wget -O /usr/bin/7z "https://github.com/develar/7zip-bin/blob/master/mac/7za?raw=true" &> /dev/null; break
                         done
                         while [ "$curl" = 0 ]; do
-                              brew install curl < /dev/null; :
+                              brew install curl < /dev/null; break
                         done
                         while [ "$git" = 0 ]; do
-                              brew install git < /dev/null; :
+                              brew install git < /dev/null; break
                         done
                         while [ "$tar" = 0 ]; do
-                              brew instal tar < /dev/null; :
+                              brew instal tar < /dev/null; break
                         done
                         while [ "$mo" = 0 ]; do
-                              curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo; :
+                              curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo
                               chmod +x mo
                               sudo mv mo /usr/bin/mo
+                              break
                         done
                         echo -e "\e[0m"
                   else
@@ -91,22 +92,22 @@ else
       elif [[ "$uname" == *"Linux"* ]] || [[ "$uname2" == *"Linux"* ]]; then
             echo -e "\e[31mMissing dependencies: \e[0m\n\n"
             while [ "$jq" = 0 ]; do
-                  echo -e "\e[31mjq\e[0m\n"; :
+                  echo -e "\e[31mjq\e[0m\n"; break
             done
             while [ "$curl" = 0 ]; do
-                  echo -e "\e[31mcurl\e[0m\n"; :
+                  echo -e "\e[31mcurl\e[0m\n"; break
             done
             while [ "$zip" = 0 ]; do
-                  echo -e "\e[31m7-zip\e[0m\n"; :
+                  echo -e "\e[31m7-zip\e[0m\n"; break
             done
             while [ "$git" = 0 ]; do
-                  echo -e "\e[31mgit\e[0m\n"; :
+                  echo -e "\e[31mgit\e[0m\n"; break
             done
             while [ "$mo" = 0 ]; do
-                  echo -e "\e[31mmo\e[0m\n"; :
+                  echo -e "\e[31mmo\e[0m\n"; break
             done
             while [ "$tar" = 0 ]; do
-                  echo -e "\e[31mtar\e[0m\n"; :
+                  echo -e "\e[31mtar\e[0m\n"; break
             done
             echo -e "\e[36mTry to auto-install missing? (y/n)\n?:"
             read fixmissing
@@ -129,49 +130,49 @@ else
                         sudo apt-get -y upgrade
                         wait
                         while [ "$jq" = 0 ]; do
-                              sudo apt-get install -y jq; :
+                              sudo apt-get install -y jq; break
                         done
                         while [ "$zip" = 0 ]; do
-                              sudo apt-get install -y p7zip p7zip-full; :
+                              sudo apt-get install -y p7zip p7zip-full; break
                         done
                         while [ "$curl" = 0 ]; do
-                              sudo apt-get install -y curl; :
+                              sudo apt-get install -y curl; break
                         done
                         while [ "$git" = 0 ]; do
-                              sudo apt-get install -y git; :
+                              sudo apt-get install -y git; break
                         done
                         while [ "$mo" = 0 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo
                               chmod +x mo
                               mv mo /usr/bin/mo
-                              :
+                              break
                         done
                         while [ "$tar" = 0 ]; do
-                              sudo apt-get install -y tar; :
+                              sudo apt-get install -y tar; break
                         done
                         echo -e "\e[0m"
                   else
                         echo -e "\e[37m"
                         while [ "$jq" = 0 ]; do
-                              brew install jq; :
+                              brew install jq; break
                         done
                         while [ "$zip" = 0 ]; do
-                              brew install p7zip; :
+                              brew install p7zip; break
                         done
                         while [ "$curl" = 0 ]; do
-                              brew install curl; :
+                              brew install curl; break
                         done
                         while [ "$git" = 0 ]; do
-                              brew install git; :
+                              brew install git; break
                         done
                         while [ "$tar" = 0 ]; do
-                              brew install tar; :
+                              brew install tar; break
                         done
                         while [ "$mo" = 0 ]; do
                               curl -sSO https://raw.githubusercontent.com/tests-always-included/mo/master/mo
                               chmod +x mo
                               mv mo /usr/bin/mo
-                              :
+                              break
                         done
                         echo -e "\e[0m"        
                   fi
@@ -185,7 +186,7 @@ else
       fi
 fi
 if grep -Rq "OPENAPILOGIN" /etc/environment; then
-      :
+      break
 else
       echo -e "\e[97mPlease enter your Openload.co API login (you will need to register an account):\n\e[90m"
       read OPENAPILOGIN
