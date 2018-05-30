@@ -122,21 +122,32 @@ else
             done
             echo -e "\e[0m"
             if [ "$fixmissing" = "y" ]; then
-                  icou = 0
+                  icou=1
                   echo -e "\e[36m\nMethod to use?"
                   if [ "$apt" = 1 ]; then
-                        echo -e "$icou""\e[36m\n\t. Apt (Debian-based)\n"
+                        echo -e "\n\t$icou""\e[36m. Apt (Debian-based)\n"
                         ((icou++))
                   elif [[ "$brew" ]]; then
-                        echo -e "$icou""\e[36m\n\t. Linuxbrew (non-Debian-based)\n"
+                        echo -e "\n\t$icou""\e[36m. Linuxbrew (non-Debian-based)\n"
                   else
                         echo -e "\e[36m\n\tNo install methods available. Install apt or linuxbrew, and try again.\nAlternatively, install dependencies manually.\nPlease contact exlineal@protonmail.cf with your package manager so it can get support."
                         exit 0
                   fi
-                  "\n\n(1 or 2)\n?:"
+                  echo -e "\n\n(enter number)\n?:"
                   read aptorbrew
                   while [[ ( "$aptorbrew" != 1 && "$aptorbrew" != 2 ) ]]; do
-                        echo -e "Invalid.\n\nMethod to use?\n\t1. Apt (Debian-based)\n\t2. Linuxbrew (non-Debian-based) (1 or 2)\n?:"
+                        icou=1
+                        echo -e "\e[36m\nMethod to use?"
+                        if [ "$apt" = 1 ]; then
+                              echo -e "\n\t$icou""\e[36m. Apt (Debian-based)\n"
+                              ((icou++))
+                        elif [[ "$brew" ]]; then
+                              echo -e "\n\t$icou""\e[36m. Linuxbrew (non-Debian-based)\n"
+                        else
+                              echo -e "\e[36m\n\tNo install methods available. Install apt or linuxbrew, and try again.\nAlternatively, install dependencies manually.\nPlease contact exlineal@protonmail.cf with your package manager so it can get support."
+                              exit 0
+                        fi
+                        echo -e "\n\n(enter number)\n?:"
                         read aptorbrew
                   done
                   if [ "$aptorbrew" = 1 ]; then
@@ -202,7 +213,7 @@ else
       fi
 fi
 if grep -Rq "OPENAPILOGIN" /etc/environment; then
-      break
+      :
 else
       echo -e "\e[97mPlease enter your Openload.co API login (you will need to register an account):\n\e[90m"
       read OPENAPILOGIN
