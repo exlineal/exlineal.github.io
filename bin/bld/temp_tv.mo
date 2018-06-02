@@ -19,6 +19,7 @@
 		<noscript><link rel="stylesheet" href="https://exlineal.cf/assets/css/noscript_prod.css" /></noscript>
 		<link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/tUreWHe.png">
 		<meta name="spare" content="{{sparelink}}">
+		<meta name="date" content="{{date}}">
 	</head>
 	<body>
 

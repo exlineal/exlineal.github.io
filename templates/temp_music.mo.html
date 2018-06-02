@@ -19,6 +19,7 @@
 		<noscript><link rel="stylesheet" href="https://exlineal.cf/assets/css/noscript_prod.css" /></noscript>
 		<link rel="shortcut icon" type="image/x-icon" href="https://i.imgur.com/tUreWHe.png">
 		<meta name="spare" content="{{sparelink}}">
+		<meta date="{{date}}">
 	</head>
 	<body>
 
@@ -33,7 +34,6 @@
 								<h1>Exlineal</h1>
 								<h2>{{title}}</h2>
 								<h3>{{musician}}</h3>
-								<h4>Rated {{rating}}</h4>
 								<h4>Genre: {{genre}}</h4>
 								<h4>{{description}}</h4>
 								<h4><a href="{{url}}">purchase</a></h4>
