@@ -23,7 +23,7 @@ function zip_n_split {
 		noxtension=$(echo $outFile | cut -f 1 -d '.')
 		file="${noxtension##*/}"
 		echo -e "\n\e[37mCompressing, please wait...\e[90	m\n"
-		7z -v99m -mx=0 a "$file".7z "$outFile" &> /dev/null
+		7z -mx=0 a "$file".7z "$outFile" &> /dev/null
 		numvols=1
 		return 0
 	fi
@@ -47,7 +47,11 @@ function deccr {
 			if [ "$numvols" -le 9 ]; then
 				outFile="$file"".7z"".00""$i"
 			elif [ "$numvols" -le 99 ]; then
-				outFile="$file"".7z"".0""$i"
+				if [ "$i" -le 9 ]; then
+					outFile="$file"".7z"".00""$i"
+				else
+					outFile="$file"".7z"".0""$i"
+				fi
 			else
 				outFile="$file"".7z"".""$i"
 			fi

@@ -54,6 +54,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
+						<div id="quote"><script src="https://exlineal.cf/assets/js/quote.js"></script></div>
 						<p class="copyright">&copy; 2018 Wren. Powered by covfefe.</p>
 					</footer>
 
