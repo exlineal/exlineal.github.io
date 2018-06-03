@@ -59,7 +59,7 @@ function deccr {
 			echo -e "\n\e[37mSecond host...\e[90m"
 			ope1=$(curl --silent https://api.openload.co/1/file/ul? | jq -r '.result.url')
 			ope2=$(curl --progress-bar -g -X POST -F "file1=@$outFile" "$ope1" | jq -r '.result.url')
-			echo "ope2" >> open
+			echo "$ope2" >> open
 			echo -e "\n\e[37mThird host...\e[90m"
 			tek=$(curl --progress-bar -F file=@$outFile https://api.teknik.io/v1/Upload | jq -r '.result.url')
 			echo "$tek" >> tek
@@ -459,4 +459,5 @@ fi
 rm -f "$file".7z* &> /dev/null
 rm 1 &> /dev/null
 rm -f "$file"".0""*"
+rm -f date links linkx moe moex moezlinkz.txt nixfil nixfil.b64 nixfil.enc nixfil.hex open openloadlinkz.txt tek tekniklinkz.txt 
 echo -e "\e[32m\n\n\nPage for """$softname""" generated; saved to /exlineal/outfiles/"${tab2[$mediatype]}"/"$pagename".html\nEmail file to exlineal@protonmail.com to add.\n\n\e[37mFinished!"
