@@ -41,8 +41,8 @@ function deccr {
 	if [ "$cut" -gt 99000000 ]; then
 		7z -v99m -mx=0 a "$file".7z "$outFile" &> /dev/null
 		numvols=$(7z l "$file.7z.001" | grep "Volumes" | tr -dc '0-9')
-		j="$numvols"
-		i=1	
+		j=${numvols}
+		i=1
 		while [ "$i" -le "$j" ]; do
 			if [ "$numvols" -le 9 ]; then
 				outFile="$file"".7z"".00""$i"
